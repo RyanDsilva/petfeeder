@@ -4,18 +4,12 @@ import time
 import datetime
 import RPi.GPIO as GPIO
 import smtplib
+import keys
 
 # INIT
 
 GPIO.setmode(GPIO.BOARD)
-config = {
-    "apiKey": "AIzaSyDcKfwtlG1UdRLKrVXFbvlShXjuC9BrRkY",
-    "authDomain": "petfeeder-iot.firebaseapp.com",
-    "databaseURL": "https://petfeeder-iot.firebaseio.com",
-    "storageBucket": "petfeeder-iot.appspot.com",
-    "serviceAccount": "petfeeder-iot-firebase-adminsdk-q55v5-6e2bb87433.json"
-}
-firebase = pyrebase.initialize_app(config)
+firebase = pyrebase.initialize_app(keys.config)
 db = firebase.database()
 
 # creates SMTP session
@@ -23,7 +17,7 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 # start TLS for security
 s.starttls()
 # Authentication
-s.login("byteme.kjsce@gmail.com", "Skullcandy@123")
+s.login(keys.senderEmail, keys.senderPass)
 
 # message to be sent
 message = "You need to refill your PetFeedr storage tank!"
@@ -61,8 +55,8 @@ try:
             db.child("feedings").push(currentTime)
             db.child("feeder").update({"motor": False})
             if rc_time(7) < 2000:
-                s.sendmail("byteme.kjsce@gmail.com",
-                           "rynoryan1998@gmail.com", message)
+                s.sendmail(keys.senderEmail,keys.recipientEmail, message)
+                print("EMAIL SENT!")
         else:
             print("Feedr Off..")
         time.sleep(0.5)
