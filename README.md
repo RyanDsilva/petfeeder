@@ -52,6 +52,6 @@ $ python3 petfeedr.py
 
 ---
 
-## Contributers
+## Contributors
 
 - [@RyanDsilva](https://github.com/RyanDsilva)
