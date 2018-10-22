@@ -4,12 +4,12 @@ import time
 import datetime
 import RPi.GPIO as GPIO
 import smtplib
-import keys
+import INFO
 
 # INIT
 
 GPIO.setmode(GPIO.BOARD)
-firebase = pyrebase.initialize_app(keys.config)
+firebase = pyrebase.initialize_app(INFO.config)
 db = firebase.database()
 
 # creates SMTP session
@@ -17,7 +17,7 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 # start TLS for security
 s.starttls()
 # Authentication
-s.login(keys.senderEmail, keys.senderPass)
+s.login(INFO.senderEmail, INFO.senderPass)
 
 # message to be sent
 message = "You need to refill your PetFeedr storage tank!"
@@ -55,7 +55,7 @@ try:
             db.child("feedings").push(currentTime)
             db.child("feeder").update({"motor": False})
             if rc_time(7) < 2000:
-                s.sendmail(keys.senderEmail,keys.recipientEmail, message)
+                s.sendmail(INFO.senderEmail, INFO.recipientEmail, message)
                 print("EMAIL SENT!")
         else:
             print("Feedr Off..")
