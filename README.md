@@ -1,6 +1,7 @@
 # PetFeedr :dog:
 
-![Build](https://img.shields.io/badge/build-passing-green.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Made With Python](https://img.shields.io/badge/Made%20With-Python-yellow.svg)
 
 <p align="center">
