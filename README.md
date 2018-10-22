@@ -1,8 +1,9 @@
 # PetFeedr :dog:
 
 ![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-orange.svg)
 ![Made With Python](https://img.shields.io/badge/Made%20With-Python-yellow.svg)
+[![GitHub stars](https://img.shields.io/github/stars/RyanDsilva/petfeeder.svg)](https://github.com/RyanDsilva/petfeeder/stargazers)
 
 <p align="center">
   <a href="" rel="noopener" target="_blank">
